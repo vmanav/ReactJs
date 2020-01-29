@@ -41,9 +41,13 @@ import MyInfo from './MyInfo';
 // // Our component can return only one JSX element 
 // ReactDOM.render(<MyApp />, document.getElementById("root"));
 
-ReactDOM.render(<MyInfo />, document.getElementById("root"))
+// // Rendering by Importing Component `MyInfo` from another file
+// ReactDOM.render(<MyInfo />, document.getElementById("root"))
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
+
+// React Parent/ Child Components
+
 
 
 // If you want your app to work offline and load faster, you can change

@@ -6,7 +6,7 @@ function MyInfo() {
             <h1>Manav Verma</h1>
             <p>This is a paragraph about me...</p>
             <ul>
-                <li>Spain</li>
+                <li>Spainjasi</li>
                 <li>Canada</li>
                 <li>USA</li>
             </ul>
