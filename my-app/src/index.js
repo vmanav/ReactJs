@@ -57,6 +57,8 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // }
 
 // let element = <h1>Hello, {formatText(p1)}</h1>
+// => Here in `{  }` the curly braces we indicate javascript code and outside of them are JSX - IMPORTATNT
+
 // ReactDOM.render(element, document.getElementById('root'));
 
 // // Updating the Rendered Element => React Only Updates What’s Necessary
