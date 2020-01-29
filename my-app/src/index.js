@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { func } from 'prop-types';
-import { isCompositeComponent } from 'react-dom/test-utils';
+// import './style.css'
 
-// import component from anotehr file 
-import MyInfo from './MyInfo';
+// // import component from anotehr file 
+// import MyInfo from './MyInfo';
 
 // ReactDOM.render(`WHAT TO RENDER`, `WHERE TO RENDER IT`)
 // ReactDOM.render(
@@ -44,13 +41,35 @@ import MyInfo from './MyInfo';
 // // Rendering by Importing Component `MyInfo` from another file
 // ReactDOM.render(<MyInfo />, document.getElementById("root"))
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));
 
 // React Parent/ Child Components
+ReactDOM.render(<App />, document.getElementById('root'));
 
+// // More into JSX
+// function formatText(user) {
+//     return user.firstName + ' ' + user.lastName + ', Age : ' + user.age;
+// }
+// let p1 = {
+//     firstName: "Manav",
+//     lastName: "Verma",
+//     age: 20
+// }
 
+// let element = <h1>Hello, {formatText(p1)}</h1>
+// ReactDOM.render(element, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// // Updating the Rendered Element => React Only Updates What’s Necessary
+// // WATHC IT, in Dev Tools, only the h2 portion with {}is getting updated and rest is not.
+
+// function tick() {
+//     const element = (
+//         <div>
+//             <h1>Hello, world!</h1>
+//             <h2>It is {new Date().toLocaleTimeString()}.</h2>
+//         </div>
+//     );
+//     ReactDOM.render(element, document.getElementById('root'));
+// }
+
+// setInterval(tick, 1000);

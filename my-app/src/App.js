@@ -1,10 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Footer from './Footer'
 import MainContent from './MainContent';
 import Header from './Header';
 
+// React Parent/ Child Components
 function App() {
     return (
         <div>
@@ -14,4 +13,5 @@ function App() {
         </div>
     );
 }
+
 export default App;
