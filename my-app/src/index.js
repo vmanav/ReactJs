@@ -12,12 +12,12 @@ import App from './App';
 //         <h1>STFU</h1>
 //         <p>HI THERE I AM REACT</p>
 //     </div>
-//     , document.getElementById("root"))
+//     , document.getElementById("root")
+// )
 // This is JSX => { a syntax extension to JavaScript }
 // When i remove the first line it says,   "EROR" => 'React' must be in scope when using JSX  react/react-in-jsx-scope
 
-
-// React Functional Components
+// // React Functional Components
 // function MyApp() {
 //     return (
 //         <div>
@@ -38,13 +38,15 @@ import App from './App';
 // // Our component can return only one JSX element 
 // ReactDOM.render(<MyApp />, document.getElementById("root"));
 
-// // Rendering by Importing Component `MyInfo` from another file
+
+// Rendering by Importing Component `MyInfo` from another file
 // ReactDOM.render(<MyInfo />, document.getElementById("root"))
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // React Parent/ Child Components
-ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));
+
 
 // // More into JSX
 // function formatText(user) {
