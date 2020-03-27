@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Footer from './Footer'
 import MainContent from './MainContent';
+
 import Header from './Header';
 
 import jokesData from './jokesData';
+import ReactDOM from 'react-dom';
 
 // // React Parent/ Child Components
 // function App() {
@@ -94,10 +96,10 @@ import jokesData from './jokesData';
 // function Joke(props) {
 //     return (
 //         <div>
-//             <h3 style={{ display: props.data.question ? "block" : "none" }}>Question : {props.data.question}</h3>
+//             <h3 style={{ display: props.question ? "block" : "none" }}>Question : {props.question}</h3>
 //             {/* alternatove way -> */}
 //             {/* bcoz display: "block" is default for h3 attribute */}
-//             <p style={{ color: props.data.question ? "black" : "#888888" }}>Answer: {props.data.punchLine}</p>
+//             <p style={{ color: props.question ? "black" : "#888888" }}>Answer: {props.punchLine}</p>
 //             <hr />
 //         </div>
 //     )
@@ -123,30 +125,116 @@ import jokesData from './jokesData';
 //     );
 // }
 
-
-// Mapping Components in React, (change in Joke component)
+// // Mapping Components in React, (change in Joke component)
 // function Joke(props) {
 //     return (
 //         <div>
 //             <h3 style={{ display: props.question ? "block" : "none" }}>Question : {props.question}</h3>
 //             {/* alternatove way -> */}
 //             {/* bcoz display: "block" is default for h3 attribute */}
-//             <p style={{ color: props.question ? "black" : "#888888" }}>Answer: {props.punchLine}</p>
+//             <p style={{ color: props.question ? "black" : "lightcoral" }}>Answer: {props.punchLine}</p>
 //             <hr />
 //         </div>
 //     )
 // }
 
-// function App() {
-//     const jokeComponentsArray = jokesData.map(function (jokeItem) {
-//         return <Joke question={jokeItem.question} punchLine={jokeItem.punchLine} />
+// function App(){
+//     const jokeComponentsArray = jokesData.map(function(jokeItem){
+//         return <Joke key={jokeItem.id} question={jokeItem.question} punchLine={jokeItem.punchLine}/>
 //     })
-
+//     // console.log(jokeComponentsArray);
 //     return (
 //         <div>
 //             {jokeComponentsArray}
 //         </div>
-//     )
+//     )   
 // }
 
+// // Mapping Components Practice
+// import productsData from './vschoolProducts';
+
+// function Product(props){
+//     return(
+//         <div>
+//             <h2>Name : {props.product.name}</h2>
+//             <p> Price : {props.product.price}</p>
+//             <p> Description : {props.product.description}</p>
+//             <hr/>
+//         </div>
+//     )
+// }
+// function App() {
+//     const ProductsComponentsArray = productsData.map((prod) =>{
+//          return <Product key={prod.id} product={prod} />
+//     })
+    
+//   return (
+//     <div>
+//         {ProductsComponentsArray}
+//     </div>
+//   )
+// }
+
+
+// Class Based Components
+// class App extends React.Component {
+    
+//     render() {
+//         return(
+//             <div>
+//                 <h2>Our code goes Here</h2>
+//                 {/* whenever we have to use rops we will have to write */}
+//                 {/* {this.props.propesKadata    } */}
+//             </div>
+//         )
+//     }
+// }
+
+
+// Class Based Components PRACTICE
+
+class App extends React.Component{
+    render(){
+        return(
+            <div>
+                <Header2 username="Manav" />
+                <Greeting />
+            </div>
+        )
+    }
+}
+class Header2 extends React.Component{
+    render() {
+        return (
+            <header>
+                <p>Welcome, {this.props.username}!</p>
+            </header>
+        )
+    }
+}
+
+class Greeting extends React.Component{
+    render() {
+        const date = new Date()
+        const hours = date.getHours()
+        let timeOfDay;
+        if (hours < 12) {
+            timeOfDay = "morning"
+        } else if (hours >= 12 && hours < 17) {
+            timeOfDay = "afternoon"
+        } else {
+            timeOfDay = "night"
+        }
+        return (
+            <h1>Good {timeOfDay} to you, sir or madam!</h1>
+        )
+    }
+}
+
+
+
+
+ReactDOM.render(<App />, document.getElementById("root"))
+
 export default App;
+// Jab export default karte hai to import karte vakt kisi bhi nam se kar sakte h import
