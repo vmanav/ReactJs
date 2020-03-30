@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+// import App from './App';
 // import './style.css'
 
 // // import component from anotehr file 
@@ -42,7 +42,9 @@ import App from './App';
 // Rendering by Importing Component `MyInfo` from another file
 // ReactDOM.render(<MyInfo />, document.getElementById("root"))
 
-ReactDOM.render(<App />, document.getElementById("root"));
+
+// ReactDOM.render(<App />, document.getElementById("root"));
+
 
 // React Parent/ Child Components
 // ReactDOM.render(<App />, document.getElementById('root'));
@@ -77,3 +79,125 @@ ReactDOM.render(<App />, document.getElementById("root"));
 // }
 
 // setInterval(tick, 1000);
+
+
+// React STATE CONCEPTS => ( --official REACT docs-- )
+
+// A component cannot change/ manipulate the `prop` it is recieving
+// A state is a way in which a component can maintan its own data and manipulate it
+
+
+// function Clock(props){
+//     return(
+//         <div>
+//             <h1>Hello, world!</h1>
+//             <h2>It is {props.date.toLocaleTimeString()}.</h2>
+//         </div>
+//     );
+// }
+
+// function tick() {
+//         ReactDOM.render(
+//         <Clock date={new Date()}/>
+//         , document.getElementById('root')
+//     );
+// }  
+// setInterval(tick, 1000);
+// Now `clock` is still not truly reusable Component.
+// The fact that the Clock sets up a timer and updates the UI every second should be an implementation detail of the Clock.
+
+// Ideally we want to write this once and have the Clock update itself:   ```<Clock />```
+
+// To implement this, we need to add “state” to the Clock component.
+// State is similar to props, but it is private and fully controlled by the component.
+
+
+// Adding Local State to a class ==>
+
+// 1. Convert into a Class Based Component
+class Clock extends React.Component {
+
+    // Class components should always call the base constructor with props.
+    constructor() {
+        super(); // call to global function called `super()`, calls to the ultimate parent class...
+        this.state = { date: new Date() };
+    }
+
+    // These are Lifecycle methods
+    componentDidMount() {
+        // method runs after the component output has been rendered to (inserted into) the DOM.
+        // This is a good place to set up a timer
+        this.timerID = setInterval(
+            () => this.tick(),
+            1000
+        );
+        // We have saved the timer ID right on this (this.timerID).
+    }
+
+    // We will tear down the timer in the componentWillUnmount() lifecycle method
+    componentWillMount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+        this.setState({
+            date: new Date()
+        });
+        // schedule updates to the component local state:
+    }
+    // Thanks to the setState() call, React knows the state has changed,
+    // and calls the render() method again to learn what should be on the screen.
+
+    render() {
+        return (
+            <div>
+                <h1>Hello, world!</h1>
+                {/* 2. Replace this.props.date with this.state.date in the render() method: */}
+                {/* <h2>It is {this.props.date.toLocaleTimeString()}.</h2> */}
+                <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+            </div>
+        );
+    }
+}
+
+// ReactDOM.render(
+//     <Clock />
+//     , document.getElementById('root')
+// );
+
+
+
+// // React STATE Practice -2
+// class App extends React.Component{
+//     constructor() {
+//         super();
+//         this.state = {
+//             isLoggedIn : false
+//         }
+//     }
+//     render() {
+//          return (
+//             <div>
+//                 <h1>You are currently logged { this.state.isLoggedIn ? "IN" : "OUT" } </h1>
+//             </div>
+//         ) 
+//     }
+// }
+
+function handleClick() {
+    console.log("I was clicked!");
+}
+
+
+function App() {
+    return (
+        <div>
+            <img src="https://www.fillmurray.com/200/100"/>
+            <br />
+            <br />
+            <button onClick={handleClick}>Click me</button>
+        </div>
+    )
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));

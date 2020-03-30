@@ -193,48 +193,50 @@ import ReactDOM from 'react-dom';
 
 // Class Based Components PRACTICE
 
-class App extends React.Component{
-    render(){
-        return(
-            <div>
-                <Header2 username="Manav" />
-                <Greeting />
-            </div>
-        )
-    }
-}
-class Header2 extends React.Component{
-    render() {
-        return (
-            <header>
-                <p>Welcome, {this.props.username}!</p>
-            </header>
-        )
-    }
-}
+// class App extends React.Component{
+//     render(){
+//         return(
+//             <div>
+//                 <Header2 username="Manav" />
+//                 <Greeting />
+//             </div>
+//         )
+//     }
+// }
+// class Header2 extends React.Component{
+//     render() {
+//         return (
+//             <header>
+//                 <p>Welcome, {this.props.username}!</p>
+//             </header>
+//         )
+//     }
+// }
 
-class Greeting extends React.Component{
-    render() {
-        const date = new Date()
-        const hours = date.getHours()
-        let timeOfDay;
-        if (hours < 12) {
-            timeOfDay = "morning"
-        } else if (hours >= 12 && hours < 17) {
-            timeOfDay = "afternoon"
-        } else {
-            timeOfDay = "night"
-        }
-        return (
-            <h1>Good {timeOfDay} to you, sir or madam!</h1>
-        )
-    }
-}
-
-
+// class Greeting extends React.Component{
+//     render() {
+//         const date = new Date()
+//         const hours = date.getHours()
+//         let timeOfDay;
+//         if (hours < 12) {
+//             timeOfDay = "morning"
+//         } else if (hours >= 12 && hours < 17) {
+//             timeOfDay = "afternoon"
+//         } else {
+//             timeOfDay = "night"
+//         }
+//         return (
+//             <h1>Good {timeOfDay} to you, sir or madam!</h1>
+//         )
+//     }
+// }
 
 
-ReactDOM.render(<App />, document.getElementById("root"))
 
-export default App;
+
+// ReactDOM.render(<App />, document.getElementById("root"))
+
+
+
+// export default App;
 // Jab export default karte hai to import karte vakt kisi bhi nam se kar sakte h import
