@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import randomcolor from 'randomcolor';
-import { networkInterfaces } from 'os';
 // import App from './App';
 // import './style.css'
 
@@ -206,74 +205,74 @@ class Clock extends React.Component {
 
 
 
-// React setState: Changing the State
+// // React setState: Changing the State
 
-class App extends React.Component {
+// class App extends React.Component {
 
-    constructor() {
-        super()
-        this.state = {
-            count: 0,
-            color: '#11FF00'
-        }
-        // Binding `this`
-        this.handleClick = this.handleClick.bind(this);
-        // we are inding bcoz inside the fucntion we loose out `this`
-        this.decrement=this.decrement.bind(this);
-    }
+//     constructor() {
+//         super()
+//         this.state = {
+//             count: 0,
+//             color: '#11FF00'
+//         }
+//         // Binding `this`
+//         this.handleClick = this.handleClick.bind(this);
+//         // we are inding bcoz inside the fucntion we loose out `this`
+//         this.decrement=this.decrement.bind(this);
+//     }
 
-    handleClick() {
-        // this.setState({
-        //     count : 1
-        // })
-        this.setState((prevState) => {
-            // console.log(prevState)
-            return {
-                count: prevState.count + 1
-            }
-        })
-        // setState ke andar hamesh OBJECT jaeyga
-    }
+//     handleClick() {
+//         // this.setState({
+//         //     count : 1
+//         // })
+//         this.setState((prevState) => {
+//             // console.log(prevState)
+//             return {
+//                 count: prevState.count + 1
+//             }
+//         })
+//         // setState ke andar hamesh OBJECT jaeyga
+//     }
 
-    decrement() {
-        this.setState((prevState) =>{
-            return {
-                count: prevState.count-1
-            }
-        })
-    }
+//     decrement() {
+//         this.setState((prevState) =>{
+//             return {
+//                 count: prevState.count-1
+//             }
+//         })
+//     }
 
 
-    componentDidUpdate(prevProps, prevState) {
-        // console.log("Updated..");
-        if (prevState.count !== this.state.count) {
-            const newColor = randomcolor();
-            // console.log(newColor);
-            this.setState({
-                color: newColor
-            })
-        }
-        // instead of doing this we can also do
-        // return {
-        //     count: prevState.count + 1,
-        //     color: randomcolor()
-        // }
-        // in the this.handleClick() function
-    }
+//     componentDidUpdate(prevProps, prevState) {
+//         // console.log("Updated..");
+//         if (prevState.count !== this.state.count) {
+//             const newColor = randomcolor();
+//             // console.log(newColor);
+//             this.setState({
+//                 color: newColor
+//             })
+//         }
+//         // instead of doing this we can also do
+//         // return {
+//         //     count: prevState.count + 1,
+//         //     color: randomcolor()
+//         // }
+//         // in the this.handleClick() function
+//     }
 
-    render() {
-        return (
-            <div>
-                <h1 style={{ color: this.state.color }}>{this.state.count}</h1>
-                <button onClick={this.handleClick}>Increment!</button>
-                <button onClick={this.decrement}>Decrement!</button>
-            </div>
-            // If we are not biding this in the tsConstructorType, the we can do THIS=>
-            // This syntax ensures `this` is bound within handleClick
-            // ==> `onClick={() => this.handleClick()}>`
-        )
-    }
-}
+//     render() {
+//         return (
+//             <div>
+//                 <h1 style={{ color: this.state.color }}>{this.state.count}</h1>
+//                 <button onClick={this.handleClick}>Increment!</button>
+//                 <button onClick={this.decrement}>Decrement!</button>
+//             </div>
+//             // If we are not biding this in the tsConstructorType, the we can do THIS=>
+//             // This syntax ensures `this` is bound within handleClick
+//             // ==> `onClick={() => this.handleClick()}>`
+//         )
+//     }
+// }
 
 
 
@@ -343,6 +342,114 @@ class App extends React.Component {
 // 3. componentWillUpdate()
 
 
+
+// React CONDITIONAL RENDER
+function Conditional(props) {
+    
+    return(
+        <div>
+            <p>  content content content content  </p>
+        </div>
+    )
+}
+
+// // Alternative
+// if (props.isLoading === true) {
+//     return (
+//         <h1>Loading...</h1>
+//     )
+// }
+// return (
+//     <p>  content content content content  </p>
+// )
+
+
+// class App extends React.Component {
+
+//     constructor() {
+//         super();
+//         this.state = {
+//             isLoading: true
+//         }
+//     }
+
+//     componentDidMount() {
+//         setTimeout(() => {
+//             this.setState({
+//                 isLoading: false
+//             })
+//         }, 1500);
+//     }
+
+//     render() {
+//         return (
+//             <div>
+//                 {this.state.isLoading ?
+//                 <h1>Loading...</h1> :
+//                 <Conditional />
+//                 }
+//             </div>
+//         )
+//     }
+// }
+
+
+// // React Conditional Render Part 2
+// class App extends React.Component {
+//     constructor(){
+//         super();
+//         this.state = {
+//             unreadMessages : [
+//                 "Call your mom!",
+//                 "New spam email available. All links are definitely safe to click."
+//             ]
+//         }
+//     }
+
+//     render() {
+//         return(
+//             <div>
+//                 {   this.state.unreadMessages.length > 0 && 
+//                     <h2>You have {this.state.unreadMessages.length} unread messages!</h2>
+//                 }
+//             </div>
+//         )
+//     }
+// }
+
+
+
+
+// React Conditional Render Practice =>
+class App extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            isLoggedIn : false
+        }
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(){
+        // console.log("clicked");
+        this.setState((prevState)=>{
+            return{
+                isLoggedIn: !prevState.isLoggedIn
+            }
+        })
+    }
+
+    render() {
+        let buttonText = this.state.isLoggedIn ? "Log Out" : "Log In";
+        // console.log("buttonText -> ", buttonText);
+        return(
+            <div>
+                {this.state.isLoggedIn ? <h1>You Are Logged In </h1> : <h1>You Are Logged Out </h1>}
+                <button onClick={this.handleClick}>{buttonText}</button>
+            </div>
+        )
+    }
+}
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
