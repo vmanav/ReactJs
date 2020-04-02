@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+
+import randomcolor from 'randomcolor';
+import { networkInterfaces } from 'os';
 // import App from './App';
 // import './style.css'
 
@@ -135,7 +138,7 @@ class Clock extends React.Component {
     }
 
     // We will tear down the timer in the componentWillUnmount() lifecycle method
-    componentWillMount() {
+    componentWillUnmount() {
         clearInterval(this.timerID);
     }
 
@@ -184,20 +187,162 @@ class Clock extends React.Component {
 //     }
 // }
 
-function handleClick() {
-    console.log("I was clicked!");
+// function handleClick() {
+//     console.log("I was clicked!");
+// }
+
+
+// function App() {
+//     return (
+//         <div>
+//             <img src="https://www.fillmurray.com/200/100"/>
+//             <br />
+//             <br />
+//             <button onClick={handleClick}>Click me</button>
+//         </div>
+//     )
+// }
+
+
+
+
+// React setState: Changing the State
+
+class App extends React.Component {
+
+    constructor() {
+        super()
+        this.state = {
+            count: 0,
+            color: '#11FF00'
+        }
+        // Binding `this`
+        this.handleClick = this.handleClick.bind(this);
+        // we are inding bcoz inside the fucntion we loose out `this`
+        this.decrement=this.decrement.bind(this);
+    }
+
+    handleClick() {
+        // this.setState({
+        //     count : 1
+        // })
+        this.setState((prevState) => {
+            // console.log(prevState)
+            return {
+                count: prevState.count + 1
+            }
+        })
+        // setState ke andar hamesh OBJECT jaeyga
+    }
+
+    decrement() {
+        this.setState((prevState) =>{
+            return {
+                count: prevState.count-1
+            }
+        })
+    }
+
+
+    componentDidUpdate(prevProps, prevState) {
+        // console.log("Updated..");
+        if (prevState.count !== this.state.count) {
+            const newColor = randomcolor();
+            // console.log(newColor);
+            this.setState({
+                color: newColor
+            })
+        }
+        // instead of doing this we can also do
+        // return {
+        //     count: prevState.count + 1,
+        //     color: randomcolor()
+        // }
+        // in the this.handleClick() function
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 style={{ color: this.state.color }}>{this.state.count}</h1>
+                <button onClick={this.handleClick}>Increment!</button>
+                <button onClick={this.decrement}>Decrement!</button>
+            </div>
+            // If we are not biding this in the tsConstructorType, the we can do THIS=>
+            // This syntax ensures `this` is bound within handleClick
+            // ==> `onClick={() => this.handleClick()}>`
+        )
+    }
 }
 
 
-function App() {
-    return (
-        <div>
-            <img src="https://www.fillmurray.com/200/100"/>
-            <br />
-            <br />
-            <button onClick={handleClick}>Click me</button>
-        </div>
-    )
-}
+
+// // React LIFECYCLE METHODS : 
+// class App extends Component {
+//     constructor() {
+//         super()
+//         this.state = {}
+//     }
+
+//     static getDerivedStateFromProps(props, state) {
+//         // return the new, updated state based upon the props 
+//         // https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html
+//         // REACT TEAM discourages the use of this
+
+//     }
+
+//     getSnapshotBeforeUpdate() {
+//         // create a backup(an object probably) of the current way things are
+//         // Not super common
+
+//     }
+
+
+//     componentDidMount() {
+//         console.log("You were just born..");
+//         // Very first time the component shows UP
+//         // Not rerun when a component is renderIntoDocument, bczo component didnt actualy unount and remount
+//         // GET the data we need to CORRECTLY DISPLAY
+//     }
+
+//     componentWillReceiveProps(nextProps) {
+//         // receivng props from parentev
+//         // Everytime recieving props will run this method
+//         // Will not only the 1st when compononet is mounted,
+//         // but also every single time a parent pass props to child component
+//         // calculate the difference betwnn received and OLD ROPS if reqd Headers.apply.
+//         if (nextProps.someProp !== this.props.someProp) {
+//             // do soemthing IMPORTANT here..
+//         }
+//     }
+
+//     shouldComponentUpdate(nextProps, nextState) {
+//         // return TRUE if we want to updte
+//         // return FALSE if we dont want to updte (MORE PERRFORMANT)
+//     }
+
+//     componentWillUnmount() {
+//         // teardown or cleanup your code before your component disappears
+
+//         // example -> removing event listenners for wverytime someone scrolled on screen
+//     }
+
+//     render() {
+//         return (
+//             <div>
+//                 Code goes here
+//             </div>
+//         )
+//     }
+// }
+
+
+// Depricated LifeCycle METHODS -
+// 1. componentWillMount()
+// 2. componentWillReceiveProps()
+// 3. componentWillUpdate()
+
+
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
