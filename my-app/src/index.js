@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import randomcolor from 'randomcolor';
+
+
 // import App from './App';
 // import './style.css'
 
@@ -345,8 +347,8 @@ class Clock extends React.Component {
 
 // React CONDITIONAL RENDER
 function Conditional(props) {
-    
-    return(
+
+    return (
         <div>
             <p>  content content content content  </p>
         </div>
@@ -420,36 +422,326 @@ function Conditional(props) {
 
 
 
-// React Conditional Render Practice =>
+// // React Conditional Render Practice =>
+// class App extends React.Component {
+//     constructor(){
+//         super();
+//         this.state = {
+//             isLoggedIn : false
+//         }
+//         this.handleClick = this.handleClick.bind(this);
+//     }
+
+//     handleClick(){
+//         // console.log("clicked");
+//         this.setState((prevState)=>{
+//             return{
+//                 isLoggedIn: !prevState.isLoggedIn
+//             }
+//         })
+//     }
+
+//     render() {
+//         let buttonText = this.state.isLoggedIn ? "Log Out" : "Log In";
+//         // console.log("buttonText -> ", buttonText);
+//         return(
+//             <div>
+//                 {this.state.isLoggedIn ? <h1>You Are Logged In </h1> : <h1>You Are Logged Out </h1>}
+//                 <button onClick={this.handleClick}>{buttonText}</button>
+//             </div>
+//         )
+//     }
+// }
+
+
+
+
+
+// // Fetching data from an API with React =>
+// REFER COURSE, `swap API` not working in code
+
+
+
+
+
+// // REACT FORMS PART 1, 2 ==>
+
+// class App extends Component {
+//     constructor() {
+//         super()
+//         this.state = {
+//             firstName: "",
+//             lastName: "",
+//             isFriendly: true,
+//             gender: "",
+//             favColor: "Blue",
+//             password: ""
+//         }
+//         this.handleChange = this.handleChange.bind(this);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//     }
+//     handleChange(event) {
+//         // console.log(event);
+//         // console.log(event.target.value);
+//         // this.setState({
+//         //     [event.target.name] : event.target.value
+//         // })
+//         // ALTERNATIVE
+//         // coopy the name and value from `event.target` before
+//         const { name, value, type, checked} = event.target;
+//         type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
+//     }
+
+//     handleSubmit(event) {
+//         alert('Submitted Name : ' + this.state.firstName + ' ' + this.state.lastName);
+//         event.preventDefault();
+//     }
+
+//     render() {
+//         return (
+//             <form onSubmit={this.handleSubmit}>
+//                 <input type='text' value={this.state.firstName} name="firstName" placeholder="First Name" onChange={this.handleChange} />
+//                 <br />
+//                 <input type='text' value={this.state.lastName} name="lastName" placeholder="Last Name" onChange={this.handleChange} />
+//                 <hr />
+//                 <h3> Name : {this.state.firstName} {this.state.lastName}</h3>
+//                 <hr />
+
+//                 {/* <input type="submit" value="Submit" /> */}
+
+//                 {/* Other useful form elements: */}
+//                 {/* *  */}
+//                 {/* *  <textarea /> element */}
+//                 {/* *  <input type="checkbox" /> */}
+//                 {/* *  <input type="radio" /> */}
+//                 {/* *  <select> and <option> elements */}
+
+
+//                 {/* TEXTAREA => */}
+//                 {/* in out orl HTML this is like this : <textarea></textarea> */}
+//                 {/* but REACT modifed it as an selfClosingtag so that we can use `value` attribute */}
+//                 <textarea 
+//                     value={"Some Random Text"} 
+//                     onChange={this.handleChange}
+//                 />
+
+
+//                 {/* CHECKBOX */}
+//                 <input 
+//                     type="checkbox"
+//                     name="isFriendly"
+//                     checked={this.state.isFriendly}
+//                     onChange={this.handleChange}
+//                 />  Is Friendly ?
+
+
+//                 <br />
+//                 {/* RADIO BUTTON */}
+//                 <input 
+//                         type="radio"
+//                         name="gender"
+//                         value="male"
+//                         checked={this.state.gender === "male" }
+//                         onChange={this.handleChange}
+//                 /> Male
+
+//                 <input 
+//                         type="radio"
+//                         name="gender"
+//                         value="female"
+//                         checked={this.state.gender === "female" }
+//                         onChange={this.handleChange}
+//                 /> Female
+//                 <br />
+//                 <h2>You are a {this.state.gender}</h2>
+
+
+//                 <br />
+//                 {/* SELECT TAG */}
+//                 <label>Favorite Color:</label>
+//                 <select
+//                     value={this.state.favColor}
+//                     onChange={this.handleChange}
+//                     name="favColor"
+//                 >
+//                     <option
+//                         value="Red"
+//                     >Red
+//                     </option>
+//                     <option
+//                         value="Blue"
+//                     >Blue
+//                     </option>
+//                     <option
+//                         value="Green"
+//                     >Green
+//                     </option>
+//                 </select>
+//                 <h2>Your favourite color is : {this.state.favColor}</h2>
+
+//                 {/* REACT allows us to write a single handle change for all elements with an exception for `CHECKBOXES` */}
+//                 <hr />
+//                 <input
+//                     name="password"
+//                     type="password"
+//                     onChange={this.handleChange}
+//                     // value={this.state.password}                    
+//                 />
+//                 <br />
+//                 <h3>Password Chosen by you is : {this.state.password}</ h3>
+
+//             </form>
+//         )
+//     }
+// }
+
+
+
+
+
+
+// REACT FORMS PRACTICE
+
 class App extends React.Component {
-    constructor(){
-        super();
+    constructor() {
+        super()
         this.state = {
-            isLoggedIn : false
+            firstName: "",
+            lastName: "",
+            age: "",
+            gender: "",
+            destination: "",
+            dietaryRestrictions: {
+                isVegan: false,
+                isKosher: false,
+                isLactoseFree: false
+            }
+
         }
-        this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleClick(){
-        // console.log("clicked");
-        this.setState((prevState)=>{
-            return{
-                isLoggedIn: !prevState.isLoggedIn
-            }
-        })
+    handleChange(event) {
+        const { name, value, type, checked } = event.target;
+
+        type === "checkbox" ?
+            this.setState((prevState) => {
+                return {
+                    dietaryRestrictions: {
+                        ...prevState.dietaryRestrictions,
+                        [name]: checked
+                    }
+                }
+            }) :
+            this.setState({
+                [name]: value
+            });
     }
 
     render() {
-        let buttonText = this.state.isLoggedIn ? "Log Out" : "Log In";
-        // console.log("buttonText -> ", buttonText);
-        return(
-            <div>
-                {this.state.isLoggedIn ? <h1>You Are Logged In </h1> : <h1>You Are Logged Out </h1>}
-                <button onClick={this.handleClick}>{buttonText}</button>
-            </div>
+        return (
+            <main>
+                <form>
+
+                    <input
+                        placeholder="First Name"
+                        name="firstName"
+                        value={this.state.firstName}
+                        onChange={this.handleChange}
+                    />
+                    <br />
+                    <input
+                        name="lastName"
+                        value={this.state.lastName}
+                        onChange={this.handleChange}
+                        placeholder="Last Name"
+                    />
+                    <br />
+
+                    <input
+                        name="age"
+                        value={this.state.age}
+                        onChange={this.handleChange}
+                        placeholder="Age" />
+                    <br />
+
+                    Gender :
+                    <input
+                        type="radio"
+                        name="gender"
+                        checked={this.state.gender === "Male"}
+                        value="Male"
+                        onChange={this.handleChange}
+                    />Male
+                     <input
+                        type="radio"
+                        name="gender"
+                        checked={this.state.gender === "Female"}
+                        value="Female"
+                        onChange={this.handleChange}
+                    />Female
+                    <br />
+
+                    Destination :
+                    <select
+                        name="destination"
+                        value={this.state.destination}
+                        onChange={this.handleChange}
+                    >
+                        <option value="">-- Please Choose a destination --</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Ladakh">Ladakh</option>
+                    </select>
+                    <br />
+
+                    Dietary Restrictions :
+                    <br />
+                    <input
+                        type="checkbox"
+                        name="isVegan"
+                        checked={this.state.dietaryRestrictions.isVegan}
+                        onChange={this.handleChange}
+                    />Vegan
+                    <br />
+                    <input
+                        type="checkbox"
+                        name="isKosher"
+                        checked={this.state.dietaryRestrictions.isKosher}
+                        onChange={this.handleChange}
+                    />Kosher
+                    <br />
+                    <input
+                        type="checkbox"
+                        name="isLactoseFree"
+                        checked={this.state.dietaryRestrictions.isLactoseFree}
+                        onChange={this.handleChange}
+                    />Lactose Free
+                    <br />
+
+                    <button>Submit</button>
+                </form>
+
+                <hr />
+                <h2>Entered information:</h2>
+                <p>Your name: {this.state.firstName} {this.state.lastName}.</p>
+                <p>Your age: {this.state.age}</p>
+                <p>Your gender: {this.state.gender}</p>
+                <p>Your destination: {this.state.destination}</p>
+
+                <p>
+                    Your dietary restrictions:
+                    Vegan: {this.state.dietaryRestrictions.isVegan ? "Yes" : " No"}
+                    <br />
+                    Kosher: {this.state.dietaryRestrictions.isKosher ? "Yes" : " No"}
+                    <br />
+                    Lactose Free: {this.state.dietaryRestrictions.isLactoseFree ? "Yes" : " No"}
+                    <br />
+                </p>
+
+            </main>
         )
     }
 }
-
 
 ReactDOM.render(<App />, document.getElementById('root'));
