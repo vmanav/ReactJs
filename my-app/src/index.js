@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import randomcolor from 'randomcolor';
 
+import Form from './FormContainer';
 
 // import App from './App';
 // import './style.css'
@@ -602,146 +603,19 @@ function Conditional(props) {
 
 // REACT FORMS PRACTICE
 
-class App extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            firstName: "",
-            lastName: "",
-            age: "",
-            gender: "",
-            destination: "",
-            dietaryRestrictions: {
-                isVegan: false,
-                isKosher: false,
-                isLactoseFree: false
-            }
+// React Container & Component Architecture ==>
+// Moved and Divide into FormComponent and FormContainer to 
 
-        }
-        this.handleChange = this.handleChange.bind(this);
-    }
 
-    handleChange(event) {
-        const { name, value, type, checked } = event.target;
 
-        type === "checkbox" ?
-            this.setState((prevState) => {
-                return {
-                    dietaryRestrictions: {
-                        ...prevState.dietaryRestrictions,
-                        [name]: checked
-                    }
-                }
-            }) :
-            this.setState({
-                [name]: value
-            });
-    }
 
-    render() {
-        return (
-            <main>
-                <form>
 
-                    <input
-                        placeholder="First Name"
-                        name="firstName"
-                        value={this.state.firstName}
-                        onChange={this.handleChange}
-                    />
-                    <br />
-                    <input
-                        name="lastName"
-                        value={this.state.lastName}
-                        onChange={this.handleChange}
-                        placeholder="Last Name"
-                    />
-                    <br />
 
-                    <input
-                        name="age"
-                        value={this.state.age}
-                        onChange={this.handleChange}
-                        placeholder="Age" />
-                    <br />
 
-                    Gender :
-                    <input
-                        type="radio"
-                        name="gender"
-                        checked={this.state.gender === "Male"}
-                        value="Male"
-                        onChange={this.handleChange}
-                    />Male
-                     <input
-                        type="radio"
-                        name="gender"
-                        checked={this.state.gender === "Female"}
-                        value="Female"
-                        onChange={this.handleChange}
-                    />Female
-                    <br />
-
-                    Destination :
-                    <select
-                        name="destination"
-                        value={this.state.destination}
-                        onChange={this.handleChange}
-                    >
-                        <option value="">-- Please Choose a destination --</option>
-                        <option value="Delhi">Delhi</option>
-                        <option value="Goa">Goa</option>
-                        <option value="Ladakh">Ladakh</option>
-                    </select>
-                    <br />
-
-                    Dietary Restrictions :
-                    <br />
-                    <input
-                        type="checkbox"
-                        name="isVegan"
-                        checked={this.state.dietaryRestrictions.isVegan}
-                        onChange={this.handleChange}
-                    />Vegan
-                    <br />
-                    <input
-                        type="checkbox"
-                        name="isKosher"
-                        checked={this.state.dietaryRestrictions.isKosher}
-                        onChange={this.handleChange}
-                    />Kosher
-                    <br />
-                    <input
-                        type="checkbox"
-                        name="isLactoseFree"
-                        checked={this.state.dietaryRestrictions.isLactoseFree}
-                        onChange={this.handleChange}
-                    />Lactose Free
-                    <br />
-
-                    <button>Submit</button>
-                </form>
-
-                <hr />
-                <h2>Entered information:</h2>
-                <p>Your name: {this.state.firstName} {this.state.lastName}.</p>
-                <p>Your age: {this.state.age}</p>
-                <p>Your gender: {this.state.gender}</p>
-                <p>Your destination: {this.state.destination}</p>
-
-                <p>
-                    Your dietary restrictions:
-                    Vegan: {this.state.dietaryRestrictions.isVegan ? "Yes" : " No"}
-                    <br />
-                    Kosher: {this.state.dietaryRestrictions.isKosher ? "Yes" : " No"}
-                    <br />
-                    Lactose Free: {this.state.dietaryRestrictions.isLactoseFree ? "Yes" : " No"}
-                    <br />
-                </p>
-
-            </main>
-        )
-    }
+function App (){
+    return(
+        <Form />
+    )
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
