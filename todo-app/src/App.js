@@ -12,8 +12,15 @@ class App extends React.Component {
 			todos: todosData
 		}
 		this.handleChange = this.handleChange.bind(this);
+
+		console.log("App ka constructor called");
+
 	}
-	
+
+	componentDidMount(){
+		console.log("App ka componentDidMount() called");
+	}
+
 	handleChange(id) {
 		this.setState((prevState) => {
 			const updatedTodos = prevState.todos.map((item)=>{
@@ -39,6 +46,8 @@ class App extends React.Component {
 	}
 
 	render() {
+
+		console.log("App ka render() called");
 
 		const todosComponentsArray = this.state.todos.map((todo) => {
 			return	<TodoItem 

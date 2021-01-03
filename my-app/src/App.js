@@ -35,7 +35,7 @@ import ReactDOM from 'react-dom';
 //                     email:"mr.whiskaz@catnap.meow"
 //                 }}
 //             />
-            
+
 //             <ContactCard 
 //             contact = {{
 //                 name:"Fluffykins" ,
@@ -44,7 +44,7 @@ import ReactDOM from 'react-dom';
 //                 email:"fluff@me.com"
 //                  }}
 //             />
-            
+
 //             <ContactCard 
 //             contact = {{
 //                 name:"Destroyer" ,
@@ -53,7 +53,7 @@ import ReactDOM from 'react-dom';
 //                 email:"ofworlds@yahoo.com"
 //                  }}
 //             />
-            
+
 //             <ContactCard 
 //             contact = {{
 //                 name:"Felix" ,
@@ -167,7 +167,7 @@ import ReactDOM from 'react-dom';
 //     const ProductsComponentsArray = productsData.map((prod) =>{
 //          return <Product key={prod.id} product={prod} />
 //     })
-    
+
 //   return (
 //     <div>
 //         {ProductsComponentsArray}
@@ -178,7 +178,7 @@ import ReactDOM from 'react-dom';
 
 // Class Based Components
 // class App extends React.Component {
-    
+
 //     render() {
 //         return(
 //             <div>
@@ -238,5 +238,5 @@ import ReactDOM from 'react-dom';
 
 
 
-// export default App;
+export default App;
 // Jab export default karte hai to import karte vakt kisi bhi nam se kar sakte h import

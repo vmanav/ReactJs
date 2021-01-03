@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import randomcolor from 'randomcolor';
@@ -608,13 +608,28 @@ function Conditional(props) {
 
 
 
+// function App (){
+//     return(
+//         <Form />
+//     )
+// }
 
 
 
+function App() {
+    const [count, setCount] = useState({ count: 0, answer: "Yes" });
 
-function App (){
-    return(
-        <Form />
+    console.log("Count : ", count);
+
+    // function Increment() {
+    //     setCount(prevCount => prevCount + 1);
+    // }
+
+    return (
+        <div>
+            <h1>{count}</h1>
+            {/* <button onClick={null}>Increment</button> */}
+        </div>
     )
 }
 
