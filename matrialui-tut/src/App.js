@@ -67,7 +67,7 @@ function App() {
       <Container maxWidth="sm">
         <div className="App">
           <header className="App-header">
-            <AppBar>
+            {/* <AppBar>
               <Toolbar>
                 <IconButton>
                   <Menu>
@@ -78,7 +78,7 @@ function App() {
                   Login
                     </Button>
               </Toolbar>
-            </AppBar>
+            </AppBar> */}
             <MyButton />
 
             {/* <TextField
